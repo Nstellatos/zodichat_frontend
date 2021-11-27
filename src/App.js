@@ -1,6 +1,5 @@
 import './App.css';
-import PostIndex from './containers/PostIndex';
-import PostShow from './components/PostShow';
+import { PostIndex, PostShow } from './components';
 import { Switch, Route } from 'react-router-dom';
 
 function App() {

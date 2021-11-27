@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { getPosts } from '../redux/actionCreators';
 import { connect } from 'react-redux';
-import PostCard from '../components/PostCard';
+import { PostCard } from '../components';
 
 function PostIndex({ getPosts, posts }) {
 	useEffect(getPosts, [getPosts]);
