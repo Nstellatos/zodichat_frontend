@@ -1,13 +1,13 @@
 import './App.css';
 import Home from './containers/Home';
-import Posts from './containers/Posts';
+import PostIndex from './containers/PostIndex';
 
 function App() {
 	return (
 		<>
 			<div className="App">blog test</div>
 			<Home />
-			<Posts />
+			<PostIndex />
 		</>
 	);
 }
