@@ -1,13 +1,19 @@
 import './App.css';
-import Home from './containers/Home';
 import PostIndex from './containers/PostIndex';
+import PostShow from './components/PostShow';
+import { Switch, Route } from 'react-router-dom';
 
 function App() {
 	return (
 		<>
-			<div className="App">blog test</div>
-			<Home />
-			<PostIndex />
+			<Switch>
+				<Route path="/posts/:id">
+					<PostShow />
+				</Route>
+				<Route path="/posts">
+					<PostIndex />
+				</Route>
+			</Switch>
 		</>
 	);
 }
