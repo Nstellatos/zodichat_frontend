@@ -1,9 +1,14 @@
-export default function PostCard({ title, description, imageUrl }) {
+import { Link } from 'react-router-dom';
+
+export default function PostCard({ id, title, imageUrl }) {
 	return (
 		<div className="post">
-			<img src={imageUrl} alt={title} />
-			<h2>{title}</h2>
-			<p>{description}</p>
+			<Link to={`/posts/${id}`}>
+				<img src={imageUrl} alt={title} />
+			</Link>
+			<Link to={`/posts/${id}`}>
+				<h2>{title}</h2>
+			</Link>
 		</div>
 	);
 }
