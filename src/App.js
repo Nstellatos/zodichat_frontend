@@ -1,10 +1,11 @@
 import './App.css';
-import { PostIndex, PostShow } from './components';
+import { PostIndex, PostShow, Nav } from './components';
 import { Switch, Route } from 'react-router-dom';
 
 function App() {
 	return (
 		<>
+			<Nav />
 			<Switch>
 				<Route path="/posts/:id">
 					<PostShow />
