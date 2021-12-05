@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export default function PostCard({ id, title, description, imageUrl }) {
+function PostCard({ id, title, description, imageUrl }) {
 	return (
 		<div className="post">
 			<Link to={`/posts/${id}`}>
@@ -12,8 +12,9 @@ export default function PostCard({ id, title, description, imageUrl }) {
 						<h3>{title}</h3>
 					</Link>
 				</span>
-				<p className="postDesc">{description}</p>
 			</div>
+			<p className="postDesc">{description}</p>
 		</div>
 	);
 }
+export default PostCard;
