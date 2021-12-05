@@ -1,12 +1,12 @@
-export const getPosts = () => {
+export const getSigns = () => {
 	return (dispatch) =>
-		fetch('http://localhost:3000/posts')
+		fetch('http://localhost:3000/signs')
 			.then((res) => res.json())
-			.then((posts) => dispatch({ type: 'GET_POSTS', payload: posts }));
+			.then((signs) => dispatch({ type: 'GET_SIGNS', payload: signs }));
 };
-export const getPost = (id) => {
+export const getSign = (id) => {
 	return (dispatch) =>
-		fetch(`http://localhost:3000/posts/${id}`)
+		fetch(`http://localhost:3000/signs/${id}`)
 			.then((res) => res.json())
-			.then((post) => dispatch({ type: 'GET_POST', payload: post }));
+			.then((sign) => dispatch({ type: 'GET_SIGN', payload: sign }));
 };

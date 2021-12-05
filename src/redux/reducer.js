@@ -1,17 +1,21 @@
-const initialState = {
+const initialSign = {
+	name: '',
+	imageUrl: '',
+	id: null,
 	posts: [],
-	selectedPost: {
-		imageUrl: '',
-		title: '',
-		description: '',
-	},
 };
+
+const initialState = {
+	signs: [],
+	selectedSign: initialSign,
+};
+
 export function reducer(state = initialState, action) {
 	switch (action.type) {
-		case 'GET_POSTS':
-			return { ...state, posts: action.payload };
-		case 'GET_POST':
-			return { ...state, selectedPost: action.payload };
+		case 'GET_SIGNS':
+			return { ...state, signs: action.payload };
+		case 'GET_SIGN':
+			return { ...state, selectedSign: action.payload };
 
 		default:
 			return { ...state };
