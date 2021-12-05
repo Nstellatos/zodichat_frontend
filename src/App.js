@@ -1,5 +1,5 @@
 import './App.css';
-import { PostIndex, PostShow, Nav } from './components';
+import { SignIndex, SignShow, Nav } from './components';
 import { Switch, Route } from 'react-router-dom';
 
 function App() {
@@ -7,11 +7,11 @@ function App() {
 		<>
 			<Nav />
 			<Switch>
-				<Route path="/posts/:id">
-					<PostShow />
+				<Route path="/signs/:id">
+					<SignShow />
 				</Route>
-				<Route path="/posts">
-					<PostIndex />
+				<Route path="/signs">
+					<SignIndex />
 				</Route>
 			</Switch>
 		</>

@@ -1,5 +1,4 @@
-export { default as PostCard } from './PostCard';
-export { default as PostShow } from './PostShow';
+export { default as SignCard } from './SignCard';
+export { default as SignShow } from './SignShow';
 export { default as Nav } from './Nav';
-export { default as Header } from './Header';
-export { default as PostIndex } from '../containers/PostIndex';
+export { default as SignIndex } from '../containers/SignIndex';
