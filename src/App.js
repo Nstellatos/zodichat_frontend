@@ -13,6 +13,9 @@ function App() {
 				<Route path="/signs">
 					<SignIndex />
 				</Route>
+				<Route exact path="/">
+					<SignIndex />
+				</Route>
 			</Switch>
 		</>
 	);
