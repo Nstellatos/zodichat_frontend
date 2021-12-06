@@ -4,10 +4,17 @@ const initialSign = {
 	id: null,
 	posts: [],
 };
+const initialPost = {
+	title: '',
+	imageUrl: '',
+	description: '',
+	id: null,
+};
 
 const initialState = {
 	signs: [],
 	selectedSign: initialSign,
+	selectedPost: initialPost,
 };
 
 export function reducer(state = initialState, action) {
@@ -16,6 +23,10 @@ export function reducer(state = initialState, action) {
 			return { ...state, signs: action.payload };
 		case 'GET_SIGN':
 			return { ...state, selectedSign: action.payload };
+		case 'CLEAR_SIGN':
+			return { ...state, selectedSign: initialSign };
+		case 'GET_POST':
+			return { ...state, selectedPost: action.payload };
 
 		default:
 			return { ...state };
