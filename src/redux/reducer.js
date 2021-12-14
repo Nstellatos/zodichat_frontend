@@ -2,7 +2,6 @@ const initialSign = {
 	name: '',
 	imageUrl: '',
 	id: null,
-	posts: [],
 };
 const initialPost = {
 	title: '',
@@ -13,6 +12,7 @@ const initialPost = {
 
 const initialState = {
 	signs: [],
+	posts: [],
 	selectedSign: initialSign,
 	selectedPost: initialPost,
 };
@@ -25,8 +25,12 @@ export function reducer(state = initialState, action) {
 			return { ...state, selectedSign: action.payload };
 		case 'CLEAR_SIGN':
 			return { ...state, selectedSign: initialSign };
+		case 'GET_POSTS':
+			return { ...state, posts: action.payload };
 		case 'GET_POST':
 			return { ...state, selectedPost: action.payload };
+		case 'ADD_POST':
+			return { ...state, initialPost: action.payload };
 
 		default:
 			return { ...state };
