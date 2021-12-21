@@ -1,24 +1,18 @@
-import { useEffect } from 'react';
-import { getPosts } from '../redux/actionCreators';
 import { connect } from 'react-redux';
 import { PostCard } from '../components';
 
-function Posts({ getPosts, posts }) {
-	useEffect(getPosts, [getPosts]);
-
+function Posts({ posts }) {
 	return (
-		<>
-			<div className="posts">
-				{posts.map((post) => (
-					<PostCard {...post} key={post.id} />
-				))}
-			</div>
-		</>
+		<div className="posts">
+			{posts.map((post) => (
+				<PostCard {...post} key={post.id} />
+			))}
+		</div>
 	);
 }
 
-const mapStateToProps = (state) => {
-	return { posts: state.posts };
-};
+const mapStateToProps = (state) => ({
+	posts: state.selectedSign.posts,
+});
 
-export default connect(mapStateToProps, { getPosts })(Posts);
+export default connect(mapStateToProps)(Posts);
