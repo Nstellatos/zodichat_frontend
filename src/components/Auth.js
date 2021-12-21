@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { submitSignup } from '../redux/actionCreators';
+import { connect } from 'react-redux';
 
 function Auth(props) {
 	const [signup, setSignup] = useState(false);
@@ -20,15 +22,17 @@ function Auth(props) {
 						onChange={(e) => setUsername(e.target.value)}
 					/>
 				</label>
-				<label>
-					Sun Sign:
-					<input
-						type="text"
-						name="sunSign"
-						value={sunSign}
-						onChange={(e) => setSunSign(e.target.value)}
-					/>
-				</label>
+				{signup && (
+					<label>
+						Sun Sign:
+						<input
+							type="text"
+							name="sunSign"
+							value={sunSign}
+							onChange={(e) => setSunSign(e.target.value)}
+						/>
+					</label>
+				)}
 				<label>
 					Password:
 					<input
@@ -44,4 +48,4 @@ function Auth(props) {
 		</>
 	);
 }
-export default Auth;
+export default connect(null, { submitSignup })(Auth);
