@@ -36,8 +36,8 @@ export default function PostCard({ title, description, imageUrl, username }) {
 	return (
 		<>
 			<Card className="post" sx={{ maxWidth: 345 }}>
-				<CardHeader title={title} subheader={username} />
 				<CardMedia component="img" height="194" image={imageUrl} alt={title} />
+				<CardHeader title={title} subheader={username} />
 				<CardContent>
 					<p className="postDesc">{description}</p>
 				</CardContent>
