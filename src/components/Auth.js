@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { submitSignup } from '../redux/actionCreators';
+import { submitSignup, submitLogin } from '../redux/actionCreators';
 import { connect } from 'react-redux';
 
 function Auth(props) {
@@ -9,10 +9,18 @@ function Auth(props) {
 	const [password, setPassword] = useState('');
 
 	const toggleSignup = () => setSignup(!signup);
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		signup
+			? props.submitSignup({ username, password, sun_sign: sunSign })
+			: props.submitLogin({ username, password });
+	};
+
 	return (
 		<>
 			{signup ? <h1>Sign up!</h1> : <h1>Login!</h1>}
-			<form>
+			<form onSubmit={handleSubmit}>
 				<label>
 					Username:
 					<input
@@ -48,4 +56,4 @@ function Auth(props) {
 		</>
 	);
 }
-export default connect(null, { submitSignup })(Auth);
+export default connect(null, { submitSignup, submitLogin })(Auth);
