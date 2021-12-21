@@ -1,5 +1,5 @@
 import './App.css';
-import { SignShow, Nav, Home } from './components';
+import { SignShow, Nav, Home, Auth } from './components';
 import { Switch, Route } from 'react-router-dom';
 
 function App() {
@@ -19,6 +19,7 @@ function App() {
 					<h1 className="text-center">Four oh Four</h1>
 				</Route>
 			</Switch>
+			<Auth />
 		</>
 	);
 }
