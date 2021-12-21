@@ -1,8 +1,12 @@
+import { Link } from 'react-router-dom';
+
 export default function Nav() {
 	return (
 		<div className="nav">
-			<div className="navLeft">1</div>
-			<div className="navCenter">2</div>
+			<div className="navLeft">
+				<Link to="/">Home</Link>
+			</div>
+			<div className="navCenter"></div>
 
 			<div className="navRight">
 				<img
