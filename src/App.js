@@ -1,5 +1,5 @@
 import './App.css';
-import { SignIndex, SignShow, Nav, Home, Posts } from './components';
+import { SignShow, Nav, Home } from './components';
 import { Switch, Route } from 'react-router-dom';
 
 function App() {
@@ -7,17 +7,16 @@ function App() {
 		<>
 			<Nav />
 			<Switch>
-				<Route path="/signs/:id">
+				<Route path="/" exact>
+					<Home />
+				</Route>
+
+				<Route path="/signs/:id" exact>
 					<SignShow />
 				</Route>
-				<Route path="/posts">
-					<Posts />
-				</Route>
-				<Route path="/signs">
-					<SignIndex />
-				</Route>
-				<Route exact path="/">
-					<Home />
+
+				<Route path="*">
+					<h1 className="text-center">Four oh Four</h1>
 				</Route>
 			</Switch>
 		</>
