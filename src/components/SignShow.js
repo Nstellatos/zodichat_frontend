@@ -2,8 +2,7 @@ import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getSign, clearSign } from '../redux/actionCreators';
 import { useEffect } from 'react';
-import { Posts } from './';
-
+import { Posts } from '../components';
 function SignShow({
 	getSign,
 	name,
