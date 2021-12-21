@@ -26,13 +26,7 @@ const ExpandMore = styled((props) => {
 	}),
 }));
 
-export default function PostCard({
-	id,
-	title,
-	description,
-	imageUrl,
-	username,
-}) {
+export default function PostCard({ title, description, imageUrl, username }) {
 	const [expanded, setExpanded] = React.useState(false);
 
 	const handleExpandClick = () => {
@@ -41,15 +35,14 @@ export default function PostCard({
 
 	return (
 		<>
-			<Card sx={{ maxWidth: 345 }}>
+			<Card className="post" sx={{ maxWidth: 345 }}>
 				<CardHeader title={title} subheader={username} />
 				<CardMedia component="img" height="194" image={imageUrl} alt={title} />
 				<CardContent>
-					<Typography variant="body2" color="text.secondary">
-						<p className="postDesc">{description}</p>
-					</Typography>
+					<p className="postDesc">{description}</p>
 				</CardContent>
 				<CardActions disableSpacing>
+					View Post
 					<ExpandMore
 						expand={expanded}
 						onClick={handleExpandClick}
@@ -66,26 +59,3 @@ export default function PostCard({
 		</>
 	);
 }
-
-/*
-import { Link } from 'react-router-dom';
-
-function PostCard({ id, title, description, imageUrl }) {
-	return (
-		<div className="post">
-			<Link to={`/posts/${id}`}>
-				<img className="postImg" src={imageUrl} alt={title} />
-			</Link>
-			<div className="postInfo">
-				<span className="postTitle">
-					<Link to={`/posts/${id}`}>
-						<h3>{title}</h3>
-					</Link>
-				</span>
-			</div>
-			<p className="postDesc">{description}</p>
-		</div>
-	);
-}
-export default PostCard;
-*/
