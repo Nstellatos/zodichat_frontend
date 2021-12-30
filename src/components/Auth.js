@@ -19,40 +19,63 @@ function Auth(props) {
 
 	return (
 		<>
-			{signup ? <h1>Sign up!</h1> : <h1>Login!</h1>}
-			<form onSubmit={handleSubmit}>
-				<label>
-					Username:
-					<input
-						type="text"
-						name="username"
-						value={username}
-						onChange={(e) => setUsername(e.target.value)}
-					/>
-				</label>
-				{signup && (
-					<label>
-						Sun Sign:
+			<div className="center">
+				{signup ? <h1>SIGN UP</h1> : <h1>LOGIN</h1>}
+
+				<form onSubmit={handleSubmit}>
+					<h3>Username:</h3>
+					<div className="inputbox">
 						<input
 							type="text"
-							name="sunSign"
-							value={sunSign}
-							onChange={(e) => setSunSign(e.target.value)}
+							name="username"
+							value={username}
+							onChange={(e) => setUsername(e.target.value)}
 						/>
-					</label>
-				)}
-				<label>
-					Password:
-					<input
-						type="password"
-						name="password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-					/>
-				</label>
-				<input type="submit" value="Submit" />
-			</form>
-			<button onClick={toggleSignup}> or {signup ? 'Login' : 'Signup'}</button>
+					</div>
+
+					{signup && (
+						<h3>
+							Sun Sign:
+							<div className="inputbox">
+								<select
+									value={sunSign}
+									onChange={(e) => setSunSign(e.target.value)}
+								>
+									<option value="aries">ARIES</option>
+									<option value="taurus">TAURUS</option>
+									<option value="gemini">GEMINI</option>
+									<option value="cancer">CANCER</option>
+									<option value="leo">LEO</option>
+									<option value="virgo">VIRGO</option>
+									<option value="libra">LIBRA</option>
+									<option value="scorpio">SCORPIO</option>
+									<option value="sagittarius">SAGITTARIUS</option>
+									<option value="capricorn">CAPRICORN</option>
+									<option value="aquarius">AQUARIUS</option>
+									<option value="pisces">PISCES</option>
+								</select>
+							</div>
+						</h3>
+					)}
+					<h3>
+						Password:
+						<div className="inputbox">
+							<input
+								type="password"
+								name="password"
+								value={password}
+								onChange={(e) => setPassword(e.target.value)}
+							/>
+						</div>
+					</h3>
+					<button type="submit">SUBMIT</button>
+				</form>
+
+				<button onClick={toggleSignup}>
+					{' '}
+					or {signup ? 'LOGIN' : 'SIGNUP'}
+				</button>
+			</div>
 		</>
 	);
 }
