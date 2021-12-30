@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getSign, clearSign } from '../redux/actionCreators';
 import { useEffect } from 'react';
-import { Posts } from './';
+import { Posts, PostForm } from './';
 function SignShow({
 	getSign,
 	name,
@@ -21,11 +21,14 @@ function SignShow({
 
 	const spinner = () => <div className="loader"></div>;
 	const loadedPage = () => (
-		<div className="show">
-			<img src={imageUrl} alt={name} />
-			<p>{name}</p>
-			<Posts />
-		</div>
+		<>
+			<div className="main">
+				<h1>{name}</h1>
+
+				<Posts />
+			</div>
+			<PostForm />
+		</>
 	);
 
 	return id ? loadedPage() : spinner();
