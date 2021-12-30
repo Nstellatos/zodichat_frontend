@@ -31,6 +31,8 @@ export function reducer(state = initialState, action) {
 					posts: [action.payload, ...state.selectedSign.posts],
 				},
 			};
+		case 'LOGOUT':
+			return { ...state, user: initialUser };
 
 		default:
 			return { ...state };
