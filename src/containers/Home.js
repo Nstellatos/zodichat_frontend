@@ -1,24 +1,10 @@
-import { useEffect } from 'react';
-import { getSigns } from '../redux/actionCreators';
-import { connect } from 'react-redux';
-import { SignCard } from '../components';
+import { Header, Auth } from '../components';
 
-function Home({ getSigns, signs }) {
-	useEffect(getSigns, [getSigns]);
-
+export default function Home() {
 	return (
-		<>
-			<div className="signs">
-				{signs.map((sign) => (
-					<SignCard {...sign} key={sign.id} />
-				))}
-			</div>
-		</>
+		<div className="home">
+			<Header />
+			<Auth />
+		</div>
 	);
 }
-
-const mapStateToProps = (state) => {
-	return { signs: state.signs };
-};
-
-export default connect(mapStateToProps, { getSigns })(Home);
