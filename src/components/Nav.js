@@ -1,20 +1,65 @@
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { logout } from '../redux/actionCreators';
 
-export default function Nav() {
-	return (
+function Nav({ logout, username }) {
+	const loggedInRender = () => (
 		<div className="nav">
-			<div className="navLeft">
-				<Link to="/">Home</Link>
+			<div className="navLeft">Z O D I C H A T</div>
+			<div className="navCenter">
+				<ul className="navList">
+					<li className="navListItem">
+						<Link to="/">HOME</Link>
+					</li>
+				</ul>
 			</div>
-			<div className="navCenter"></div>
-
 			<div className="navRight">
-				<img
-					className="navImg"
-					src="https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-800x825.jpg"
-					alt=""
-				/>
+				<ul className="navList">
+					<li className="navListItem" onClick={logout}>
+						LOGOUT
+					</li>
+				</ul>
 			</div>
 		</div>
 	);
+
+	const loggedOutRender = () => '';
+
+	return username ? loggedInRender() : loggedOutRender();
 }
+
+const mapStateToProps = (state) => ({ username: state.user.username });
+
+export default connect(mapStateToProps, { logout })(Nav);
+
+/*
+function Nav({ logout, user }) {
+	<div className="top">
+		<div className="topLeft">Z O D I C H A T</div>
+		<div className="topCenter">
+			<ul className="topList">
+				<li className="topListItem">
+					<Link className="link" to="/signs">
+						HOME
+					</Link>
+				</li>
+
+				<li className="topListItem">
+					<Link className="link" to="/write">
+						WRITE
+					</Link>
+				</li>
+				<li className="topListItem" onClick={logout}>
+					{user && 'LOGOUT'}
+				</li>
+			</ul>
+		</div>
+		<div className="topRight">
+			<Link to="/settings">SETTINGS</Link>
+		</div>
+	</div>;
+}
+const mapStateToProps = (state) => ({ username: state.user.username });
+
+export default connect(mapStateToProps, { logout })(Nav);
+*/
