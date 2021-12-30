@@ -1,27 +1,32 @@
 import './App.css';
-import { SignShow, Nav, Home, Auth } from './components';
+import { SignShow, SignIndex, Home, Nav } from './components';
 import { Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { useEffect } from 'react';
+import { autoLogin } from './redux/actionCreators';
 
-function App() {
+function App({ user, autoLogin }) {
+	useEffect(() => localStorage.token && autoLogin(), [autoLogin]);
 	return (
 		<>
 			<Nav />
-			<Switch>
-				<Route path="/" exact>
-					<Home />
-				</Route>
+			{user.username ? (
+				<Switch>
+					<Route path="/" exact>
+						<SignIndex />
+					</Route>
 
-				<Route path="/signs/:id" exact>
-					<SignShow />
-				</Route>
-
-				<Route path="*">
-					<h1 className="text-center">Four oh Four</h1>
-				</Route>
-			</Switch>
-			<Auth />
+					<Route path="/signs/:id" exact>
+						<SignShow />
+					</Route>
+				</Switch>
+			) : (
+				<Home />
+			)}
 		</>
 	);
 }
 
-export default App;
+const mapStateToProps = (state) => ({ user: state.user });
+
+export default connect(mapStateToProps, { autoLogin })(App);
