@@ -6,13 +6,6 @@ export default function SignCard({ id, name, imageUrl }) {
 			<Link to={`/signs/${id}`}>
 				<img className="signImg" src={imageUrl} alt={name} />
 			</Link>
-			<div className="signInfo">
-				<span className="signName">
-					<Link to={`/signs/${id}`}>
-						<h3>{name}</h3>
-					</Link>
-				</span>
-			</div>
 		</div>
 	);
 }
