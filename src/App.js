@@ -12,12 +12,15 @@ function App({ user, autoLogin }) {
 			<Nav />
 			{user.username ? (
 				<Switch>
-					<Route path="/" exact>
+					<Route path="/signs" exact>
 						<SignIndex />
 					</Route>
 
 					<Route path="/signs/:id" exact>
 						<SignShow />
+					</Route>
+					<Route path="/" exact>
+						<SignIndex />
 					</Route>
 				</Switch>
 			) : (

@@ -9,7 +9,7 @@ function Nav({ logout, username }) {
 			<div className="navCenter">
 				<ul className="navList">
 					<li className="navListItem">
-						<Link to="/">HOME</Link>
+						<Link to="/">SIGNS</Link>
 					</li>
 				</ul>
 			</div>
