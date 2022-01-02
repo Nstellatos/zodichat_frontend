@@ -34,9 +34,7 @@ function PostCard({ id, title, description, imageUrl, username }) {
 					<span className="postTitle">
 						<h3>{title}</h3>
 
-						<Link to={`/users/${id}`}>
-							<h4>{username}</h4>
-						</Link>
+						<h4>{username}</h4>
 					</span>
 					<p>{description}</p>
 				</div>
