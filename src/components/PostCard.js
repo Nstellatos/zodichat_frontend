@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Modal from 'react-modal';
-import { Link } from 'react-router-dom';
 
 function PostCard({ id, title, description, imageUrl, username }) {
 	const [isOpen, setIsOpen] = useState(false);
