@@ -282,6 +282,9 @@ h6 {
 	align-items: center;
 	justify-content: center;
 }
+.main h1 {
+	color: white;
+}
 
 @media screen and (max-height: 450px) {
 	.sidebar {
