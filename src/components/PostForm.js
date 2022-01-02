@@ -9,7 +9,7 @@ function PostForm({ signId, submitPost }) {
 
 	const onSubmit = (e) => {
 		e.preventDefault();
-		const newPost = { title, imageUrl, description };
+		const newPost = { title, description, image_url: imageUrl };
 		submitPost(newPost, signId);
 		setTitle('');
 		setImageUrl('');
