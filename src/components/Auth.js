@@ -1,80 +1,60 @@
 import { useState } from 'react';
 import { submitSignup, submitLogin } from '../redux/actionCreators';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 function Auth(props) {
 	const [signup, setSignup] = useState(false);
 	const [username, setUsername] = useState('');
-	const [sunSign, setSunSign] = useState('');
 	const [password, setPassword] = useState('');
+	const history = useHistory();
 
 	const toggleSignup = () => setSignup(!signup);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		signup
-			? props.submitSignup({ username, password, sun_sign: sunSign })
+			? props.submitSignup({ username, password })
 			: props.submitLogin({ username, password });
+		history.push('/');
 	};
 
 	return (
 		<>
-			<div className="center">
-				{signup ? <h1>SIGN UP</h1> : <h1>LOGIN</h1>}
-
-				<form onSubmit={handleSubmit}>
-					<h3>Username:</h3>
-					<div className="inputbox">
+			<div className="login">
+				<div className="auth-inner">
+					<span className="loginTitle">
+						{signup ? <h1>SIGN UP</h1> : <h1>LOGIN</h1>}
+					</span>
+					<form className="loginForm" onSubmit={handleSubmit}>
+						<label>Username:</label>
 						<input
 							type="text"
+							className="loginInput"
 							name="username"
 							value={username}
 							onChange={(e) => setUsername(e.target.value)}
 						/>
-					</div>
 
-					{signup && (
-						<h3>
-							Sun Sign:
-							<div className="inputbox">
-								<select
-									value={sunSign}
-									onChange={(e) => setSunSign(e.target.value)}
-								>
-									<option value="aries">ARIES</option>
-									<option value="taurus">TAURUS</option>
-									<option value="gemini">GEMINI</option>
-									<option value="cancer">CANCER</option>
-									<option value="leo">LEO</option>
-									<option value="virgo">VIRGO</option>
-									<option value="libra">LIBRA</option>
-									<option value="scorpio">SCORPIO</option>
-									<option value="sagittarius">SAGITTARIUS</option>
-									<option value="capricorn">CAPRICORN</option>
-									<option value="aquarius">AQUARIUS</option>
-									<option value="pisces">PISCES</option>
-								</select>
-							</div>
-						</h3>
-					)}
-					<h3>
-						Password:
-						<div className="inputbox">
-							<input
-								type="password"
-								name="password"
-								value={password}
-								onChange={(e) => setPassword(e.target.value)}
-							/>
-						</div>
-					</h3>
-					<button type="submit">SUBMIT</button>
-				</form>
+						<label>Password:</label>
+						<input
+							type="password"
+							name="password"
+							className="loginInput"
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+						/>
 
-				<button onClick={toggleSignup}>
-					{' '}
-					or {signup ? 'LOGIN' : 'SIGNUP'}
-				</button>
+						<button type="submit" className="btn btn-primary btn-block">
+							SUBMIT
+						</button>
+					</form>
+
+					<button className="loginButton" onClick={toggleSignup}>
+						{' '}
+						{signup ? 'LOGIN' : 'Not a member? SIGNUP'}
+					</button>
+				</div>
 			</div>
 		</>
 	);
