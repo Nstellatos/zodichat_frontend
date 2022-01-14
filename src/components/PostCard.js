@@ -1,64 +1,21 @@
-import { useState } from 'react';
-import Modal from 'react-modal';
-
-function PostCard({ id, title, description, imageUrl, username }) {
-	const [isOpen, setIsOpen] = useState(false);
+import { NavLink } from 'react-router-dom';
+function PostCard({ id, title, description, imageUrl, createdAt }) {
 	return (
-		<div className="post">
-			<img className="postImg" src={imageUrl} alt={title} />
-			<div className="postInfo">
-				<span className="postTitle">
-					<h3>{title}</h3>
-				</span>
-
-				<p className="postDesc">{description}</p>
-			</div>
-
-			<button onClick={() => setIsOpen(true)}>Open</button>
-			<Modal
-				className="main"
-				isOpen={isOpen}
-				onRequestClose={() => setIsOpen(false)}
-				style={{
-					overlay: {
-						backgroundColor: 'black',
-					},
-					content: {
-						backgroundColor: 'white',
-					},
-				}}
-			>
-				<img className="postImg" src={imageUrl} alt={title} />
-				<div className="postInfo">
-					<span className="postTitle">
-						<h3>{title}</h3>
-
-						<h4>{username}</h4>
-					</span>
-					<p>{description}</p>
+		<div className="col-md-4 mb-4">
+			<div className="card h-100 text-center p-4">
+				<img src={imageUrl} className="card-img-top" alt="" height="250px" />
+				<div className="card-body">
+					<h5 className="card-title mb-0">{title}</h5>
+					<p className="postDescription ">{description}</p>
+					<div className="postDate">{new Date(createdAt).toDateString()}</div>
+					<div></div>
+					<NavLink to={`/posts/${id}`} className="btn btn-outline-dark">
+						VIEW
+					</NavLink>
 				</div>
-				<button onClick={() => setIsOpen(false)}>Close</button>
-			</Modal>
-		</div>
-	);
-}
-export default PostCard;
-/*
-function PostCard({ id, title, description, imageUrl }) {
-	return (
-		<div className="post">
-			<img className="postImg" src={imageUrl} alt={title} />
-			<div className="postInfo">
-				<span className="postTitle">
-					<h3>{title}</h3>
-				</span>
 			</div>
-
-			
-				<p>{description}</p>
-			
 		</div>
 	);
 }
+
 export default PostCard;
-*/
