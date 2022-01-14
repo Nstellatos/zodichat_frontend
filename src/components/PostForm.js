@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
 import { submitPost } from '../redux/actionCreators';
+import Modal from 'react-modal';
 
 function PostForm({ signId, submitPost }) {
 	const [title, setTitle] = useState('');
 	const [imageUrl, setImageUrl] = useState('');
 	const [description, setDescription] = useState('');
+	const [isOpen, setIsOpen] = useState(false);
 
 	const onSubmit = (e) => {
 		e.preventDefault();
@@ -18,52 +20,59 @@ function PostForm({ signId, submitPost }) {
 
 	return (
 		<>
-			<div className="sidebar">
-				<div className="write">
-					<h1>CREATE A POST</h1>
-					<form className="writeform" onSubmit={onSubmit}>
-						<div className="writeFormGroup">
-							<input
-								name="title"
-								onChange={(e) => setTitle(e.target.value)}
-								value={title}
-								className="writeInput"
-								placeholder="Title"
-								autoFocus={true}
-							></input>
-						</div>
-						<br></br>
-						<label>
-							Image:
-							<div className="writeFormGroup">
-								<textarea
-									name="imageUrl"
-									onChange={(e) => setImageUrl(e.target.value)}
-									value={imageUrl}
-								></textarea>
-							</div>
-						</label>
-						<br></br>
-						<label>
-							Description:
-							<div className="writeFormGroup">
-								<textarea
-									placeholder="Write..."
-									type="text"
-									className="writeInput writeText"
-									name="description"
-									onChange={(e) => setDescription(e.target.value)}
-									value={description}
-								></textarea>
-							</div>
-						</label>
-						<br></br>
-						<button className="writeSubmit" type="submit">
+			<button
+				className="form-control btn btn-primary"
+				onClick={() => setIsOpen(true)}
+			>
+				CREATE A POST
+			</button>
+			<Modal isOpen={isOpen} onRequestClose={() => setIsOpen(false)}>
+				<form onSubmit={onSubmit}>
+					<div className="form-group">
+						<label>Title:</label>
+						<input
+							name="title"
+							onChange={(e) => setTitle(e.target.value)}
+							value={title}
+							className="form-control"
+							placeholder="Title"
+							autoFocus={true}
+						></input>
+					</div>
+					<br></br>
+
+					<div className="form-group">
+						<label>Image URL: </label>
+						<input
+							name="imageUrl"
+							onChange={(e) => setImageUrl(e.target.value)}
+							value={imageUrl}
+							className="form-control"
+						></input>
+					</div>
+					<br></br>
+
+					<div className="form-group">
+						<label>Description:</label>
+						<input
+							placeholder="Write..."
+							type="text"
+							className="form-control"
+							name="description"
+							onChange={(e) => setDescription(e.target.value)}
+							value={description}
+						></input>
+					</div>
+
+					<br></br>
+					<div className="form-group">
+						<button className="form-control btn btn-primary" type="submit">
 							SUBMIT
 						</button>
-					</form>
-				</div>
-			</div>
+					</div>
+				</form>
+				<button onClick={() => setIsOpen(false)}>Close</button>
+			</Modal>
 		</>
 	);
 }
