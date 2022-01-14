@@ -1,10 +1,15 @@
-import { Header, Auth } from '../components';
+import { Header, Posts, Signs } from '../components';
 
 export default function Home() {
 	return (
-		<div className="home">
+		<>
 			<Header />
-			<Auth />
-		</div>
+			<Signs />
+			<hr />
+			<h1 className="display-6 fw-bolder text-center">
+				ALL POSTS
+				<Posts />
+			</h1>
+		</>
 	);
 }
