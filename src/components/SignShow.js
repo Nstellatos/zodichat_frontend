@@ -2,7 +2,8 @@ import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getSign, clearSign } from '../redux/actionCreators';
 import { useEffect } from 'react';
-import { Posts, PostForm } from './';
+import { SignPosts, PostForm } from './';
+import { useHistory } from 'react-router-dom';
 function SignShow({
 	getSign,
 	name,
@@ -12,6 +13,7 @@ function SignShow({
 	id,
 }) {
 	const routeId = useParams().id;
+	const history = useHistory();
 
 	useEffect(() => {
 		getSign(routeId);
@@ -22,12 +24,20 @@ function SignShow({
 	const spinner = () => <div className="loader"></div>;
 	const loadedPage = () => (
 		<>
-			<div className="main">
+			<div className="signShow">
+				<img className="signShowImg" src={imageUrl} alt=""></img>
 				<h1>{name}</h1>
-
-				<Posts />
 			</div>
 			<PostForm />
+			<SignPosts />
+			<div className="button">
+				<button
+					className="btn btn-outline-dark"
+					onClick={() => history.goBack()}
+				>
+					GO BACK
+				</button>
+			</div>
 		</>
 	);
 
