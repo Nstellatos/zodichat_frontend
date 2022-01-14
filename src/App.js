@@ -1,5 +1,14 @@
 import './App.css';
-import { SignShow, SignIndex, Home, Nav } from './components';
+import {
+	SignShow,
+	Signs,
+	Navbar,
+	PostShow,
+	Posts,
+	Auth,
+	Header,
+	Home,
+} from './components';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
@@ -9,22 +18,31 @@ function App({ user, autoLogin }) {
 	useEffect(() => localStorage.token && autoLogin(), [autoLogin]);
 	return (
 		<>
-			<Nav />
+			<Navbar />
 			{user.username ? (
 				<Switch>
-					<Route path="/signs" exact>
-						<SignIndex />
-					</Route>
-
 					<Route path="/signs/:id" exact>
 						<SignShow />
 					</Route>
+					<Route path="/posts/:id" exact>
+						<PostShow />
+					</Route>
+
+					<Route path="/signs" exact>
+						<Signs />
+					</Route>
+					<Route path="/posts" exact>
+						<Posts />
+					</Route>
 					<Route path="/" exact>
-						<SignIndex />
+						<Home />
 					</Route>
 				</Switch>
 			) : (
-				<Home />
+				<Switch>
+					<Route exact path="/" component={Header} />
+					<Route exact path="/login" component={Auth} />
+				</Switch>
 			)}
 		</>
 	);
