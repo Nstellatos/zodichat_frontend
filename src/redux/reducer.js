@@ -7,10 +7,17 @@ const initialSign = {
 const initialUser = {
 	username: '',
 };
+const initialPost = {
+	post: null,
+};
+
 const initialState = {
 	signs: [],
+	posts: [],
+	users: [],
 	selectedSign: initialSign,
 	user: initialUser,
+	selectedPost: initialPost,
 };
 
 export function reducer(state = initialState, action) {
@@ -23,6 +30,14 @@ export function reducer(state = initialState, action) {
 			return { ...state, selectedSign: initialSign };
 		case 'SET_USER':
 			return { ...state, user: action.payload };
+		case 'GET_USERS':
+			return { ...state, users: action.payload };
+		case 'GET_POSTS':
+			return { ...state, posts: action.payload };
+		case 'GET_POST':
+			return { ...state, selectedPost: action.payload };
+		case 'CLEAR_POST':
+			return { ...state, selectedPost: initialPost };
 		case 'ADD_POST':
 			return {
 				...state,

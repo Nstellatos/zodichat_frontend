@@ -11,6 +11,7 @@ export const getSign = (id) => {
 			.then((sign) => dispatch({ type: 'GET_SIGN', payload: sign }));
 };
 export const clearSign = () => ({ type: 'CLEAR_SIGN' });
+export const clearPost = () => ({ type: 'CLEAR_POST' });
 
 export const submitSignup = (user) => {
 	return (dispatch) =>
