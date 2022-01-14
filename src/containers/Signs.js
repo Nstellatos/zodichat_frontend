@@ -3,12 +3,12 @@ import { getSigns } from '../redux/actionCreators';
 import { connect } from 'react-redux';
 import { SignCard } from '../components';
 
-function SignIndex({ getSigns, signs }) {
+function Signs({ getSigns, signs }) {
 	useEffect(getSigns, [getSigns]);
 
 	return (
 		<>
-			<div className="signs">
+			<div className="cards">
 				{signs.map((sign) => (
 					<SignCard {...sign} key={sign.id} />
 				))}
@@ -21,4 +21,4 @@ const mapStateToProps = (state) => {
 	return { signs: state.signs };
 };
 
-export default connect(mapStateToProps, { getSigns })(SignIndex);
+export default connect(mapStateToProps, { getSigns })(Signs);
