@@ -1,3 +1,17 @@
+# Backend Repository: https://github.com/Nstellatos/zodichat_backend
+
+# Zodichat - A full-stack web application for the lovers of astrology
+
+# Installation & Usage
+fork and clone repo
+cd into backend
+  - bundle install
+  - rails db:migrate
+  - rails db:seed
+  - rails s
+cd into frontend
+  - npm start
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
